@@ -1,8 +1,6 @@
 (setq user-full-name "Juha Lento")
 (setq user-mail-address "juha.lento@csc.fi")
 
-(setq inhibit-default-init t)
-
 ;; (setenv "PATH" (concat "/usr/local/bin:/opt/local/bin:/usr/bin:/bin" (getenv "PATH")))
 ;; (setenv "GOPATH" (concat (getenv "HOME") "/go"))
 
