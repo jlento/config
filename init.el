@@ -1,6 +1,8 @@
 (setq user-full-name "Juha Lento")
 (setq user-mail-address "juha.lento@csc.fi")
 
+(setq inhibit-default-init t)
+
 ;; (setenv "PATH" (concat "/usr/local/bin:/opt/local/bin:/usr/bin:/bin" (getenv "PATH")))
 ;; (setenv "GOPATH" (concat (getenv "HOME") "/go"))
 
@@ -11,6 +13,8 @@
 (package-initialize)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (setq package-archive-enable-alist '(("melpa" deft magit)))
 
