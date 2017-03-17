@@ -1,0 +1,15 @@
+---
+- hosts: all
+
+  tasks:
+
+    - name: Add Finnish language support
+      become: true
+      apt: name={{item}} update_cache=yes cache_valid_time=3600
+      with_items:
+        - keyboard-configuration
+        - console-setup
+        - language-pack-fi
+        - language-pack-gnome-fi
+        - libenchant-voikko
+        - voikko-fi

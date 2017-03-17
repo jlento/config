@@ -1,0 +1,19 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+    config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+    config.vm.box = "bento/ubuntu-16.04"
+    config.vm.provider "virtualbox" do |v|
+       v.gui = true
+       v.memory = 2048
+       v.customize ["modifyvm", :id, "--vram", "256"]
+       v.customize ["modifyvm", :id, "--accelerate3d", "on"]
+    end
+    config.vm.provision "Base", type: "ansible_local" do |ansible|
+        ansible.playbook = "desktop.yml"
+    end
+    config.vm.provision "Finnish", type: "ansible_local" do |ansible|
+        ansible.playbook = "finnish.yml"
+    end
+end
