@@ -1,5 +1,7 @@
 * update VirtualBox and Vagrant
 
-    vagrant plugin install vagrant-vbguest
-    vagrant up
-    vagrant reload
+```bash
+vagrant plugin install vagrant-vbguest
+vagrant up
+vagrant reload
+```
