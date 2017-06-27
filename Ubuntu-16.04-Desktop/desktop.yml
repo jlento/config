@@ -15,7 +15,7 @@
         update_cache: yes
         cache_valid_time: 3600
 
-    - name: Packages
+    - name: Basic packages
       become: true
       apt: name={{item}} update_cache=yes cache_valid_time=3600
       with_items:
@@ -66,4 +66,10 @@
       become: vagrant
       shell: export `/usr/bin/dbus-launch`; /usr/bin/gsettings set com.canonical.Unity.Launcher favorites "['application://unity-control-center.desktop', 'application://chromium-browser.desktop', 'application://gnome-terminal.desktop', 'unity://running-apps', 'application://synaptic.desktop', 'unity://expo-icon', 'unity://devices']"; kill $DBUS_SESSION_BUS_PID &> /dev/null
 
+    - name: /etc/ansible/hosts localhost entry
+      become: true
+      lineinfile:
+        dest: /etc/ansible/hosts
+        regexp: "^localhost ansible_connection=local"
+        line: "localhost ansible_connection=local"
 
