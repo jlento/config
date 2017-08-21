@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
        v.memory = 2048
        v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
        v.customize ["modifyvm", :id, "--vram", "256"]
-       v.customize ["modifyvm", :id, "--accelerate3d", "off"]
+       v.customize ["modifyvm", :id, "--accelerate3d", "on"]
     end
     config.vm.synced_folder ".", "/host"
     config.vm.provision "Base", type: "ansible_local" do |ansible|
