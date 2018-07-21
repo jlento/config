@@ -1,0 +1,16 @@
+# Prepends the given path to PATH environment variable and removes duplicates
+prependpath () {
+    PATH="$1:${PATH}:"
+    PATH="${PATH//:$1}"
+    PATH="${PATH%:}"
+}
+
+# Puts the latest version of Homebrew install of Emacs into PATH, and makes
+# it the default VISUAL editor
+set -- /usr/local/Cellar/emacs-plus/*/bin
+if [ -d  ${!#} ]; then
+    prependpath ${!#}
+    export VISUAL="emacsclient -c"
+    export ALTERNATE_EDITOR=""
+    alias emacs="$VISUAL"
+fi
