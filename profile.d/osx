@@ -7,9 +7,9 @@ prependpath () {
 
 # Puts the latest version of Homebrew install of Emacs into PATH, and makes
 # it the default VISUAL editor
-set -- /usr/local/Cellar/emacs-plus/*/bin
-if [ -d  ${!#} ]; then
-    prependpath ${!#}
+emacs_path_guess=/usr/local/Cellar/emacs-plus/*/bin
+if [ -x ${emacs_path_guess}/emacsclient ]; then
+    prependpath "$emacs_path_guess"
     export VISUAL="emacsclient -c"
     export ALTERNATE_EDITOR=""
     alias emacs="$VISUAL"
