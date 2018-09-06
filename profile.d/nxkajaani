@@ -1,0 +1,45 @@
+# .bash_profile extras for nxkajaani.csc.fi NoMachine remote desktop
+
+# Prompt
+FONT_RESET=$(tput sgr0)
+FONT_BOLD=$(tput bold)
+PS1="\w \$ ${FONT_BOLD}"
+trap 'echo -ne "${FONT_RESET}" > $(tty)' DEBUG
+
+# Better terminal
+alias xt="printf '\e[2t'; gnome-terminal &"
+
+# Color ls
+alias ls="ls --color"
+
+# X Background
+if [[ $(hostname) =~ ^sisu.* ]]; then
+    background () {
+        (xview -fillscreen -onroot $1 > /dev/null &)
+    }
+else
+    background () {
+        (ssh -Y jlento@sisu.csc.fi xview -fillscreen -onroot $1 > /dev/null &)
+    }
+fi
+
+# Prepends the given path to PATH environment variable and removes duplicates
+prependpath () {
+    PATH="$1:${PATH}:"
+    PATH="${PATH//:$1}"
+    PATH="${PATH%:}"
+}
+
+# Puts the latest version of Emacs into PATH, and makes
+# it the default VISUAL editor
+emacs_path_guesses="$USERAPPL/emacs/bin /wrk/jlento/DONOTREMOVE/sisu-conda-envs/emacs/bin"
+for d in $emacs_path_guesses; do
+    if [ -x  "${d}/emacsclient" ]; then
+        prependpath "$d"
+        export VISUAL="emacsclient -c"
+        export ALTERNATE_EDITOR=""
+        export FCEDIT="$VISUAL"
+        alias emacs="$VISUAL"
+        break
+    fi
+done
