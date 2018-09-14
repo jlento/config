@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     javascript
      html
      haskell
      yaml
@@ -48,7 +49,7 @@ values."
      (auto-completion :variables auto-completion-enable-snippets-in-popup t)
      git
      markdown
-     org
+     (org :variables org-enable-reveal-js-support t)
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -312,8 +313,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
 (defun dotspacemacs/user-config ()
   (if (spacemacs/system-is-mac)
-      (setq mac-command-modifier 'meta
-            mac-option-modifier  'none))
+      (setq mac-left-command-modifier 'meta
+            mac-right-option-modifier  'none))
+  (global-set-key (kbd "C-=") 'er/expand-region)
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration.

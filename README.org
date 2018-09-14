@@ -1,4 +1,0 @@
-* Emacs configuration file
-
-Link =init.el= to =~/.emacs.d/init.el=.
-
