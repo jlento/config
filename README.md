@@ -2,7 +2,7 @@ Personal configuration files
 ===================================
 
 In general, I just clone this repository to `~/github/jlento/config`, and then
-make soft links to HOME.
+make soft links in HOME.
 
 Spacemacs
 -----------
