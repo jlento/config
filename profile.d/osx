@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Prepends the given path to PATH environment variable and removes duplicates
 prependpath () {
     PATH="$1:${PATH}:"
@@ -7,7 +9,7 @@ prependpath () {
 
 # Puts the latest version of Homebrew install of Emacs into PATH, and makes
 # it the default VISUAL editor
-emacs_path_guess=/usr/local/Cellar/emacs-plus/*/bin
+emacs_path_guess=$(ls -d /usr/local/Cellar/emacs-plus/*/bin 2> /dev/null | tail -1)
 if [ -x ${emacs_path_guess}/emacsclient ]; then
     prependpath "$emacs_path_guess"
     export VISUAL="emacsclient -c"
