@@ -3,7 +3,7 @@
 # Prompt
 FONT_RESET=$(tput sgr0)
 FONT_BOLD=$(tput bold)
-PS1="\w \$ \[${FONT_BOLD}\]"
+PS1="\[${FONT_RESET}\]\w \$ \[${FONT_BOLD}\]"
 trap 'echo -ne "${FONT_RESET}" > $(tty)' DEBUG
 
 
