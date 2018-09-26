@@ -11,9 +11,10 @@ prependpath () {
 find_emacs () {
     local emacspath=$(find $@ -name emacsclient -executable -printf "%h\n" 2> /dev/null | tail -1)
     if [ -d ${emacspath} ]; then
-        export VISUAL="${emacspath}/emacsclient -c"
+        alias emacs="${emacspath}/emacs"
+        alias emacsclient="${emacspath}/emacsclient"
+        export VISUAL="emacsclient -c"
         export ALTERNATE_EDITOR=""
-        alias emacs="$VISUAL"
     fi
 }
 
