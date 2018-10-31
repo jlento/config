@@ -9,7 +9,7 @@ prependpath () {
 
 # Guessing where to find the most recent Emacs
 find_emacs () {
-    local emacspath=$(find $@ -name emacsclient -executable -printf "%h\n" 2> /dev/null | tail -1)
+    local emacspath=$(find $@ -name emacsclient -exec dirname '{}' \; 2> /dev/null | tail -1)
     if [ -d ${emacspath} ]; then
         alias emacs="env PATH=${emacspath}:$PATH emacsclient -c"
         export VISUAL="emacs"
@@ -17,5 +17,5 @@ find_emacs () {
     fi
 }
 
-find_emacs $(dirname $(which emacsclient)) /usr/local/Cellar/emacs-plus/*/bin ${USERAPPL}/emacs/bin ${USERAPPL}/conda-envs/emacs/bin
+find_emacs $(dirname $(which emacsclient)) /usr/local/bin ${USERAPPL}/emacs/bin ${USERAPPL}/conda-envs/emacs/bin
 
