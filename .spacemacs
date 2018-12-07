@@ -46,7 +46,8 @@ values."
      better-defaults
      emacs-lisp
      (c-c++ :variables c-c++-enable-clang-support t)
-     (auto-completion :variables auto-completion-enable-snippets-in-popup t)
+     (auto-completion :variables auto-completion-enable-snippets-in-popup t
+                      (haskell :variables haskell-completion-backend 'intero))
      git
      markdown
      (org :variables org-enable-reveal-js-support t)
