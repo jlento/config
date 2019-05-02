@@ -1,16 +1,17 @@
-Personal configuration files
-===================================
+
+# Personal configuration files
+
 
 In general, I just clone this repository to `~/github/jlento/config`, and then
 make soft links in HOME.
 
-Spacemacs
------------
+## Spacemacs
+
 
     ln -s ~/github/jlento/config/.spacemacs ~/.spacemacs
 
-Bash
-----
+## Bash
+
 
 Source custom initializations from `~/.bash_profile`, with for example by adding
 line
@@ -23,3 +24,11 @@ in OS X, or for NoMachine connections with
        && [ -f ~/github/jlento/config/profile.d/nxkajaani ]; then
         source ~/github/jlento/config/profile.d/nxkajaani
     fi
+
+## Spacemacs C IDE
+
+Emacs variables you may need to touch...
+
+    flycheck-gcc-include-path
+    exec-path
+    
