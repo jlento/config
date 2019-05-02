@@ -27,6 +27,8 @@ in OS X, or for NoMachine connections with
 
 ## Spacemacs C IDE
 
+First, install **clang**. If using conda in Linux, it's in package 'clangdev'.
+
 Emacs variables you may need to touch...
 
     flycheck-gcc-include-path
