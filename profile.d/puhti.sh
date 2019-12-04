@@ -9,7 +9,7 @@ export DEFAULT_PROJECT=project_2002239
 
 export PROJECTS='
     [jlento]="Account jlento"
-    [project_2002239]="Juhas software support"
+    [project_2002239]="CSC Juhas"
     [project_2001659]="CSC Staff"
     [project_2001029]="UH OpenEPS"
     [project_2002239]="CSC Juhas"
