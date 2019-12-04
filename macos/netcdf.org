@@ -1,4 +1,0 @@
-* Install netcdf4
-
-brew install hdf5 --with-mpi
-brew install netcdf

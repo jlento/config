@@ -1,21 +1,17 @@
 #!/bin/sh
 
-# Prepends the given path to PATH environment variable and removes duplicates
 prependpath () {
     PATH="$1:${PATH}:"
     PATH="${PATH//:$1}"
     PATH="${PATH%:}"
 }
 
-# Guessing where to find the most recent Emacs
-find_emacs () {
-    local emacspath=$(find $@ -name emacsclient -exec dirname '{}' \; 2> /dev/null | tail -1)
-    if [ -d ${emacspath} ]; then
-        alias emacs="env PATH=${emacspath}:$PATH emacsclient -c"
-        export VISUAL="emacs"
-        export ALTERNATE_EDITOR=""
-    fi
+tutorial_prompt () {
+    FONT_RESET=$(tput sgr0)
+    FONT_BOLD=$(tput bold)
+    PS1="\[${FONT_RESET}\]\w \$ \[${FONT_BOLD}\]"
+    trap 'echo -ne "${FONT_RESET}" > $(tty)' DEBUG
 }
 
-find_emacs $(dirname $(which emacsclient)) /usr/local/bin ${USERAPPL}/emacs/bin ${USERAPPL}/conda-envs/emacs/bin
-
+alias xterm="xterm -fs 14 -fa Bitstream"
+alias ls="ls --color"
