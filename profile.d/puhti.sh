@@ -2,7 +2,7 @@
 
 # Default project (edit)
 
-export DEFAULT_PROJECT=project_2001659
+export DEFAULT_PROJECT=project_2002239
 
 
 # Short project descptions (edit)
@@ -10,9 +10,10 @@ export DEFAULT_PROJECT=project_2001659
 export PROJECTS='
     [jlento]="Account jlento"
     [project_2001659]="CSC Staff"
-    [project_2001029]="HY OpenEPS"
-    [project_2000652]="HY CMIP6"
-    [atm]="HY INAR"
+    [project_2001029]="UH OpenEPS"
+    [project_2002239]="CSC Juhas"
+    [project_2000652]="UH CMIP6"
+    [atm]="UH INAR"
     [project_2002037]="FMI CSC Staff"
     [project_2001635]="FMI Staff"
     [project_2001634]="FMI Pilot"
