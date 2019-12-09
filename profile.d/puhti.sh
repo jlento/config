@@ -12,7 +12,6 @@ export PROJECTS='
     [project_2002239]="CSC Juhas"
     [project_2001659]="CSC Staff"
     [project_2001029]="UH OpenEPS"
-    [project_2002239]="CSC Juhas"
     [project_2000652]="UH CMIP6"
     [atm]="UH INAR"
     [project_2002037]="FMI CSC Staff"
