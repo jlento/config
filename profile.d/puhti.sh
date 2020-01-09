@@ -45,8 +45,6 @@ workspaces () {
     done | sort
 }
 
-export -f project projappl scratch workspaces
-
 puhti-top-running () {
     squeue -h -t R -o "%u %C" | \
 	awk '{
@@ -81,3 +79,5 @@ puhti-node-status () {
                  for (i in n) printf "    %-10s%s\n", i, n[i]
              }'
 }
+
+export -f project projappl scratch workspaces puhti-top-running puhti-node-status
