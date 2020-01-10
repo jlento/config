@@ -2,7 +2,7 @@
 
 # Default project (edit)
 
-export DEFAULT_PROJECT=project_2002239
+export PROJECT=project_2002239
 
 
 # Short project descptions (edit)
@@ -20,15 +20,15 @@ export PROJECTS='
 '
 
 project () {
-    echo "${SLURM_JOB_ACCOUNT:-$DEFAULT_PROJECT}"
+    echo "${SLURM_JOB_ACCOUNT:-$PROJECT}"
 }
 
 projappl () {
-    readlink -e "/projappl/${SLURM_JOB_ACCOUNT:-$DEFAULT_PROJECT}"
+    readlink -e "/projappl/${SLURM_JOB_ACCOUNT:-$PROJECT}"
 }
 
 scratch () {
-    readlink -e "/scratch/${SLURM_JOB_ACCOUNT:-$DEFAULT_PROJECT}"
+    readlink -e "/scratch/${SLURM_JOB_ACCOUNT:-$PROJECT}"
 }
 
 workspaces () {
