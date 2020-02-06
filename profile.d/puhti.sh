@@ -2,7 +2,7 @@
 
 # Default project (edit)
 
-export PROJECT=project_2002239
+export PROJECT=${PROJECT:-project_2002239}
 
 
 # Short project descptions (edit)
@@ -45,6 +45,31 @@ workspaces () {
     done | sort
 }
 
+read_dom () {
+    local IFS=\>
+    read -d \< ENTITY CONTENT
+}
+
+projects () {
+    local dataroot=/appl/system/data/project_info/int
+    local projects=$(
+	while read_dom; do
+	    [ "${ENTITY}" = "project" ] && echo "$CONTENT"
+	done < ${dataroot}/user/$USER.xml
+    )
+    local p r="[[:space:]]"
+    for p in $projects ; do
+	if [ -f ${dataroot}/project/$p.xml ]; then
+	    echo "----------------------------------------------------"
+	    while read_dom; do
+		if [ -n "$ENTITY" ] && [[ ! "$CONTENT" =~ $r ]]; then
+		    echo "${ENTITY}: ${CONTENT}"
+		fi
+	    done < ${dataroot}/project/$p.xml
+	fi
+    done
+}
+
 puhti-top-running () {
     squeue -h -t R -o "%u %C" | \
 	awk '{
@@ -80,4 +105,4 @@ puhti-node-status () {
              }'
 }
 
-export -f project projappl scratch workspaces puhti-top-running puhti-node-status
+export -f project projappl scratch workspaces projects puhti-top-running puhti-node-status

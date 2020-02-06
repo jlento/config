@@ -1,9 +1,5 @@
 #!/bin/bash
 
-export \
-    PS1='[\u@\h \W]\$ ' \
-    EDITOR=emacs
-
 prependpath () {
     PATH="$1:${PATH}:"
     PATH="${PATH//:$1}"
@@ -17,6 +13,4 @@ tutorial_prompt () {
     trap 'echo -ne "${FONT_RESET}" > $(tty)' DEBUG
 }
 
-alias \
-    xterm="xterm -fs 14 -fa Bitstream" \
-    ls="ls --color"
+export EDITOR=emacs
