@@ -105,4 +105,4 @@ puhti-node-status () {
              }'
 }
 
-export -f project projappl scratch workspaces projects puhti-top-running puhti-node-status
+export -f project projappl scratch workspaces read_dom projects puhti-top-running puhti-node-status
