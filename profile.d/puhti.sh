@@ -4,7 +4,6 @@
 
 export PROJECT=${PROJECT:-project_2002239}
 
-
 # Short project descptions (edit)
 
 export PROJECTS='
@@ -18,18 +17,6 @@ export PROJECTS='
     [project_2001635]="FMI Staff"
     [project_2001634]="FMI Pilot"
 '
-
-project () {
-    echo "${SLURM_JOB_ACCOUNT:-$PROJECT}"
-}
-
-projappl () {
-    readlink -e "/projappl/${SLURM_JOB_ACCOUNT:-$PROJECT}"
-}
-
-scratch () {
-    readlink -e "/scratch/${SLURM_JOB_ACCOUNT:-$PROJECT}"
-}
 
 workspaces () {
     eval local -A projects=( $PROJECTS )
