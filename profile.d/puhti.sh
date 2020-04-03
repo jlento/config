@@ -18,17 +18,22 @@ export PROJECTS='
     [project_2001634]="FMI Pilot"
 '
 
+export -f workspaces read_dom projects puhti-top-running puhti-node-status
+
 workspaces () {
     eval local -A projects=( $PROJECTS )
     local scratches=$(cd /scratch; readlink -e $(id -Gn))
     local format="%-17s %-29s %14s %15s\n"
-    local d a
+    local d a c f
     printf "$format" Description Directory Capacity Files
     for d in /users/$USER ${scratches//scratch/projappl} ${scratches}; do
 	a=($(lfs project -d $d))
 	a=($(lfs quota -hqp ${a[0]} $d))
+	c=''; f=''
+	[ -z "${a[1]##*\*}" ] && a[1]=${a[1]%\*} && c='*'
+	[ -z "${a[5]##*\*}" ] && a[5]=${a[5]%\*} && f='*'
 	printf "$format" "${projects[${d##*/}]}" ${a[0]} \
-	    ${a[1]}/${a[2]} $((a[5]/1000))k/$((a[6]/1000))k
+	    $c${a[1]}/${a[2]} $f$((a[5]/1000))k/$((a[6]/1000))k
     done | sort
 }
 
@@ -92,4 +97,3 @@ puhti-node-status () {
              }'
 }
 
-export -f project projappl scratch workspaces read_dom projects puhti-top-running puhti-node-status
