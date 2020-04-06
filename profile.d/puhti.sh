@@ -18,8 +18,6 @@ export PROJECTS='
     [project_2001634]="FMI Pilot"
 '
 
-export -f workspaces read_dom projects puhti-top-running puhti-node-status
-
 workspaces () {
     eval local -A projects=( $PROJECTS )
     local scratches=$(cd /scratch; readlink -e $(id -Gn))
@@ -97,3 +95,4 @@ puhti-node-status () {
              }'
 }
 
+export -f workspaces read_dom projects puhti-top-running puhti-node-status
