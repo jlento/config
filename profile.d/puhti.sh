@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Default project (edit)
-
-export PROJECT=${PROJECT:-project_2002239}
-
 # Short project descptions (edit)
 
 export PROJECTS='
