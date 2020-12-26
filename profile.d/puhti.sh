@@ -7,11 +7,14 @@ export PROJECTS='
     [project_2002239]="CSC Juhas"
     [project_2001659]="CSC Staff"
     [project_2001029]="UH OpenEPS"
+    [project_2001011]="UH Jarvinen"
     [project_2000652]="UH CMIP6"
     [atm]="UH INAR"
     [project_2002037]="FMI CSC Staff"
     [project_2001635]="FMI Staff"
     [project_2001634]="FMI Pilot"
+    [project_2003555]="CSC Linux 1 Course"
+    [project_2003676]="GNSS-NWP"
 '
 
 workspaces () {
