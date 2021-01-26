@@ -103,7 +103,7 @@ partitions () {
 	esac
 	shift
     done
-    [ -z "$user" -a -z "$account" ] && user="User=$USER"
+    user="User=${user:-$USER}"
     echo "Available partitions and their limits:"
     sacctmgr -p show associations where ${user} ${account} | awk -F '|' '{print $2,$4?$4:"-",$8?$8:"-",$12,$15}' | column -t
 }
