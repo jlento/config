@@ -105,7 +105,7 @@ partitions () {
     done
     [ -z "$user" -a -z "$account" ] && user="User=$USER"
     echo "Available partitions and their limits:"
-    sacctmgr -p show associations where ${user} ${account} | awk -F '|' '{print $2,$4,$8?$8:"-",$12,$15}' | column -t
+    sacctmgr -p show associations where ${user} ${account} | awk -F '|' '{print $2,$4?$4:"-",$8?$8:"-",$12,$15}' | column -t
 }
 
 export -f workspaces read_dom projects mahti-top-running mahti-node-status partitions
