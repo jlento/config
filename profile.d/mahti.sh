@@ -97,7 +97,7 @@ partitions () {
     while [ -n "$1" ]
     do
 	case "$1" in
-	    -u) shift; user="User=$1" ;;
+	    -u) shift; user="$1" ;;
 	    -A) shift; account="Account=$1" ;;
 	    *) echo "$usage" ;;
 	esac
