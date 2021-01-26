@@ -91,4 +91,21 @@ puhti-node-status () {
              }'
 }
 
-export -f workspaces read_dom projects puhti-top-running puhti-node-status
+partitions () {
+    usage="$0 [-u USER] [-A account]"
+    local user account
+    while [ -n "$1" ]
+    do
+	case "$1" in
+	    -u) shift; user="User=$1" ;;
+	    -A) shift; account="Account=$1" ;;
+	    *) echo "$usage" ;;
+	esac
+	shift
+    done
+    [ -z "$user" -a -z "$account" ] && user="User=$USER"
+    echo "Available partitions and their limits:"
+    sacctmgr -p show associations where ${user} ${account} | awk -F '|' '{print $2,$4,$8?$8:"-",$12,$15}' | column -t
+}
+
+export -f workspaces read_dom projects puhti-top-running puhti-node-status projects
